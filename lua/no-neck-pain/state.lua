@@ -465,7 +465,9 @@ function state:walk_layout(scope, tree, has_col_parent, resize_only)
                         and self.get_side_id(self, "left") ~= id
                         and self.get_side_id(self, "right") ~= id
                     then
-                        self.resize_win(self, id, _G.NoNeckPain.config.width, "unregistered")
+                       if not self.is_supported_integration(self, scope, id) then
+                           self.resize_win(self, id, _G.NoNeckPain.config.width, "unregistered")
+                       end
                     end
                 end
             end
